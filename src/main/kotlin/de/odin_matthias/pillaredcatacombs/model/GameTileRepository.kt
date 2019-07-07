@@ -1,5 +1,6 @@
-package de.odin_matthias.pillaredcatacombs.config
+package de.odin_matthias.pillaredcatacombs.model
 
+import de.odin_matthias.pillaredcatacombs.config.GameColors
 import org.hexworks.zircon.api.Tiles
 import org.hexworks.zircon.api.data.CharacterTile
 import org.hexworks.zircon.api.graphics.Symbols

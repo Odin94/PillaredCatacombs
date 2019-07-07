@@ -1,6 +1,6 @@
 package de.odin_matthias.pillaredcatacombs
 
-import de.odin_matthias.pillaredcatacombs.config.GameTileRepository
+import de.odin_matthias.pillaredcatacombs.model.GameTileRepository
 import org.hexworks.zircon.api.data.BlockSide
 import org.hexworks.zircon.api.data.Tile
 import org.hexworks.zircon.api.data.base.BlockBase
