@@ -5,9 +5,11 @@ import org.hexworks.zircon.api.Components
 import org.hexworks.zircon.api.component.Button
 import org.hexworks.zircon.api.component.Component
 import org.hexworks.zircon.api.component.ComponentAlignment
+import org.hexworks.zircon.api.extensions.onComponentEvent
 import org.hexworks.zircon.api.graphics.BoxType
-import org.hexworks.zircon.api.kotlin.onMouseReleased
 import org.hexworks.zircon.api.mvc.base.BaseView
+import org.hexworks.zircon.api.uievent.ComponentEventType
+import org.hexworks.zircon.api.uievent.Processed
 import kotlin.system.exitProcess
 
 
@@ -39,9 +41,10 @@ class WinView : BaseView() {
                 .withBoxType(BoxType.SINGLE)
                 .build()
 
-        restartButton.onMouseReleased {
+        restartButton.onComponentEvent(ComponentEventType.ACTIVATED) {
             replaceWith(PlayView())
             close()
+            Processed
         }
 
         return restartButton
@@ -56,8 +59,9 @@ class WinView : BaseView() {
                 .withBoxType(BoxType.SINGLE)
                 .build()
 
-        exitButton.onMouseReleased {
+        exitButton.onComponentEvent(ComponentEventType.ACTIVATED) {
             exitProcess(0)
+            Processed
         }
 
         return exitButton
