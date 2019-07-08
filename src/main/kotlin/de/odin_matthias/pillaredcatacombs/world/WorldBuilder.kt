@@ -1,7 +1,8 @@
-package de.odin_matthias.pillaredcatacombs.model
+package de.odin_matthias.pillaredcatacombs.world
 
-import de.odin_matthias.pillaredcatacombs.GameBlock
+import de.odin_matthias.pillaredcatacombs.blocks.GameBlock
 import de.odin_matthias.pillaredcatacombs.extensions.sameLevelNeighborsShuffled
+import de.odin_matthias.pillaredcatacombs.blocks.GameBlockFactory
 import org.hexworks.zircon.api.Positions
 import org.hexworks.zircon.api.data.impl.Position3D
 import org.hexworks.zircon.api.data.impl.Size3D

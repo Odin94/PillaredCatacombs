@@ -1,8 +1,9 @@
 package de.odin_matthias.pillaredcatacombs.view
 
-import de.odin_matthias.pillaredcatacombs.GameBlock
+import de.odin_matthias.pillaredcatacombs.blocks.GameBlock
 import de.odin_matthias.pillaredcatacombs.config.GameConfig
-import de.odin_matthias.pillaredcatacombs.model.Game
+import de.odin_matthias.pillaredcatacombs.game.Game
+import de.odin_matthias.pillaredcatacombs.game.GameBuilder
 import org.hexworks.zircon.api.ColorThemes
 import org.hexworks.zircon.api.Components
 import org.hexworks.zircon.api.GameComponents
@@ -12,7 +13,7 @@ import org.hexworks.zircon.api.game.ProjectionMode
 import org.hexworks.zircon.api.mvc.base.BaseView
 
 
-class PlayView(private val game: Game = Game.create()) : BaseView() {
+class PlayView(private val game: Game = GameBuilder.defaultGame()) : BaseView() {
     override val theme = ColorThemes.arc()
 
     override fun onDock() {

@@ -1,6 +1,4 @@
-package de.odin_matthias.pillaredcatacombs.model
-
-import de.odin_matthias.pillaredcatacombs.GameBlock
+package de.odin_matthias.pillaredcatacombs.blocks
 
 
 object GameBlockFactory {
