@@ -5,6 +5,7 @@ import de.odin_matthias.pillaredcatacombs.attributes.EntityTile
 import de.odin_matthias.pillaredcatacombs.attributes.Player
 import de.odin_matthias.pillaredcatacombs.blocks.GameTileRepository
 import de.odin_matthias.pillaredcatacombs.game.GameContext
+import de.odin_matthias.pillaredcatacombs.systems.CameraMover
 import de.odin_matthias.pillaredcatacombs.systems.InputReceiver
 import de.odin_matthias.pillaredcatacombs.systems.Movable
 import org.hexworks.amethyst.api.Entities
@@ -19,6 +20,6 @@ object EntityFactory {
     fun newPlayer() = newGameEntityOfType(Player) {
         attributes(EntityPosition(), EntityTile(GameTileRepository.PLAYER))
         behaviors(InputReceiver)
-        facets(Movable)
+        facets(Movable, CameraMover)
     }
 }

@@ -19,7 +19,9 @@ object GameConfig {
     const val WINDOW_WIDTH = 80
     const val WINDOW_HEIGHT = 50
 
-    val WORLD_SIZE = Sizes.create3DSize(WINDOW_WIDTH, WINDOW_HEIGHT, CATACOMB_LEVELS)
+    const val CAMERA_DELAY = 5
+
+    val WORLD_SIZE = Sizes.create3DSize(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2, CATACOMB_LEVELS)
 
     fun buildAppConfig() = AppConfigs.newConfig()
             .enableBetaFeatures()
