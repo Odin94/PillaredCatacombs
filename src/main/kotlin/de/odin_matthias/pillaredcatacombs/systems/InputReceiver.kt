@@ -2,6 +2,7 @@ package de.odin_matthias.pillaredcatacombs.systems
 
 import de.odin_matthias.pillaredcatacombs.commands.MoveTo
 import de.odin_matthias.pillaredcatacombs.extensions.GameEntity
+import de.odin_matthias.pillaredcatacombs.extensions.position
 import de.odin_matthias.pillaredcatacombs.game.GameContext
 import org.hexworks.amethyst.api.base.BaseBehavior
 import org.hexworks.amethyst.api.entity.EntityType
@@ -20,9 +21,7 @@ object InputReceiver : BaseBehavior<GameContext>() {
                 KeyCode.KEY_A -> currentPos.withRelativeX(-1)
                 KeyCode.KEY_S -> currentPos.withRelativeY(1)
                 KeyCode.KEY_D -> currentPos.withRelativeX(1)
-                else -> {
-                    currentPos
-                }
+                else -> currentPos
             }
             player.executeCommand(MoveTo(context, player, newPosition))
         }
