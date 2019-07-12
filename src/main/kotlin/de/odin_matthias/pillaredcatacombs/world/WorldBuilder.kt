@@ -1,8 +1,8 @@
 package de.odin_matthias.pillaredcatacombs.world
 
 import de.odin_matthias.pillaredcatacombs.blocks.GameBlock
-import de.odin_matthias.pillaredcatacombs.extensions.sameLevelNeighborsShuffled
 import de.odin_matthias.pillaredcatacombs.blocks.GameBlockFactory
+import de.odin_matthias.pillaredcatacombs.extensions.sameLevelNeighborsShuffled
 import org.hexworks.zircon.api.Positions
 import org.hexworks.zircon.api.data.impl.Position3D
 import org.hexworks.zircon.api.data.impl.Size3D
@@ -40,7 +40,7 @@ class WorldBuilder(private val worldSize: Size3D) {
                 var rocks = 0
                 pos.sameLevelNeighborsShuffled().plus(pos).forEach { neighbor ->
                     blocks.whenPresent(neighbor) { block ->
-                        if (block.isFloor) {
+                        if (block.isEmptyFloor) {
                             floors++
                         } else rocks++
                     }

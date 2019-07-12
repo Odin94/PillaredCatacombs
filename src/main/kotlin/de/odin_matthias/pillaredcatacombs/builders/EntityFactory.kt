@@ -3,7 +3,9 @@ package de.odin_matthias.pillaredcatacombs.builders
 import de.odin_matthias.pillaredcatacombs.attributes.EntityPosition
 import de.odin_matthias.pillaredcatacombs.attributes.EntityTile
 import de.odin_matthias.pillaredcatacombs.attributes.Player
+import de.odin_matthias.pillaredcatacombs.attributes.Wall
 import de.odin_matthias.pillaredcatacombs.blocks.GameTileRepository
+import de.odin_matthias.pillaredcatacombs.flags.BlockOccupier
 import de.odin_matthias.pillaredcatacombs.game.GameContext
 import de.odin_matthias.pillaredcatacombs.systems.CameraMover
 import de.odin_matthias.pillaredcatacombs.systems.InputReceiver
@@ -21,5 +23,13 @@ object EntityFactory {
         attributes(EntityPosition(), EntityTile(GameTileRepository.PLAYER))
         behaviors(InputReceiver)
         facets(Movable, CameraMover)
+    }
+
+    fun newWall() = newGameEntityOfType(Wall) {
+        attributes(
+                EntityPosition(),
+                BlockOccupier,
+                EntityTile(GameTileRepository.WALL)
+        )
     }
 }

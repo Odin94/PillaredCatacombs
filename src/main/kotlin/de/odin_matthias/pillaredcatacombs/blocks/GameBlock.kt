@@ -1,8 +1,10 @@
 package de.odin_matthias.pillaredcatacombs.blocks
 
 import de.odin_matthias.pillaredcatacombs.extensions.GameEntity
+import de.odin_matthias.pillaredcatacombs.extensions.occupiesBlock
 import de.odin_matthias.pillaredcatacombs.extensions.tile
 import org.hexworks.amethyst.api.entity.EntityType
+import org.hexworks.cobalt.datatypes.Maybe
 import org.hexworks.zircon.api.data.BlockSide
 import org.hexworks.zircon.api.data.Tile
 import org.hexworks.zircon.api.data.base.BlockBase
@@ -10,8 +12,12 @@ import org.hexworks.zircon.api.data.base.BlockBase
 
 class GameBlock(private var defaultTile: Tile = GameTileRepository.FLOOR,
                 private val currentEntities: MutableList<GameEntity<EntityType>>
-                = mutableListOf()) 
+                = mutableListOf())
     : BlockBase<Tile>() {
+
+    companion object {
+        fun createWith(entity: GameEntity<EntityType>) = GameBlock(currentEntities = mutableListOf(entity))
+    }
 
     val isFloor: Boolean
         get() = defaultTile == GameTileRepository.FLOOR
@@ -19,28 +25,34 @@ class GameBlock(private var defaultTile: Tile = GameTileRepository.FLOOR,
     val isWall: Boolean
         get() = defaultTile == GameTileRepository.WALL
 
-    val isEmptyFloor: Boolean 
+    val isEmptyFloor: Boolean
         get() = currentEntities.isEmpty()
 
-    val entities: Iterable<GameEntity<EntityType>> 
+    val entities: Iterable<GameEntity<EntityType>>
         get() = currentEntities.toList()
 
-    override val layers: MutableList<Tile> 
+    val occupier: Maybe<GameEntity<EntityType>>
+        get() = Maybe.ofNullable(currentEntities.firstOrNull { it.occupiesBlock })
+
+    val isOccupied: Boolean
+        get() = occupier.isPresent
+
+    override val layers: MutableList<Tile>
         get() {
             val entityTiles = currentEntities.map { it.tile }
             val tile = when {
                 entityTiles.contains(GameTileRepository.PLAYER) -> GameTileRepository.PLAYER
-                entityTiles.isNotEmpty() -> entityTiles.first() 
-                else -> defaultTile 
+                entityTiles.isNotEmpty() -> entityTiles.first()
+                else -> defaultTile
             }
             return mutableListOf(tile)
         }
 
-    fun addEntity(entity: GameEntity<EntityType>) { 
+    fun addEntity(entity: GameEntity<EntityType>) {
         currentEntities.add(entity)
     }
 
-    fun removeEntity(entity: GameEntity<EntityType>) { 
+    fun removeEntity(entity: GameEntity<EntityType>) {
         currentEntities.remove(entity)
     }
 
