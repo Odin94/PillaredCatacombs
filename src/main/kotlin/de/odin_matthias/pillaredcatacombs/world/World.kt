@@ -84,6 +84,12 @@ class World(startingBlocks: Map<Position3D, GameBlock>,
         }
     }
 
+    fun removeEntity(entity: Entity<EntityType, GameContext>) {
+        fetchBlockAt(entity.position).map { it.removeEntity(entity) }
+        engine.removeEntity(entity)
+        entity.position = Position3D.unknown()
+    }
+
     fun addAtEmptyPosition(entity: GameEntity<EntityType>,
                            offset: Position3D = Positions.default3DPosition(),
                            size: Size3D = actualSize()): Boolean {
