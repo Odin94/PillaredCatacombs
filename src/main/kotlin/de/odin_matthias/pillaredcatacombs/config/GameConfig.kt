@@ -24,6 +24,7 @@ object GameConfig {
     val WORLD_SIZE = Sizes.create3DSize(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2, CATACOMB_LEVELS)
 
     const val FUNGI_PER_LEVEL = 15
+    const val MAXIMUM_FUNGUS_SPREAD = 20
 
 
     fun buildAppConfig() = AppConfigs.newConfig()

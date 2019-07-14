@@ -2,7 +2,10 @@ package de.odin_matthias.pillaredcatacombs.builders
 
 import de.odin_matthias.pillaredcatacombs.attributes.*
 import de.odin_matthias.pillaredcatacombs.blocks.GameTileRepository
+import de.odin_matthias.pillaredcatacombs.commands.Attack
+import de.odin_matthias.pillaredcatacombs.commands.Attackable
 import de.odin_matthias.pillaredcatacombs.commands.Dig
+import de.odin_matthias.pillaredcatacombs.commands.FungusGrowth
 import de.odin_matthias.pillaredcatacombs.flags.BlockOccupier
 import de.odin_matthias.pillaredcatacombs.game.GameContext
 import de.odin_matthias.pillaredcatacombs.systems.CameraMover
@@ -19,7 +22,7 @@ fun <T : EntityType> newGameEntityOfType(type: T, init: EntityBuilder<T, GameCon
 
 object EntityFactory {
     fun newPlayer() = newGameEntityOfType(Player) {
-        attributes(EntityPosition(), EntityTile(GameTileRepository.PLAYER), EntityActions(Dig::class))
+        attributes(EntityPosition(), EntityTile(GameTileRepository.PLAYER), EntityActions(Dig::class, Attack::class))
         behaviors(InputReceiver)
         facets(Movable, CameraMover)
     }
@@ -30,9 +33,9 @@ object EntityFactory {
         facets(Diggable)
     }
 
-    fun newFungus() = newGameEntityOfType(Fungus) {
-        attributes(EntityPosition(), BlockOccupier, EntityTile(GameTileRepository.FUNGUS))
-        behaviors()
-        facets()
+    fun newFungus(fungusSpread: FungusSpread = FungusSpread()) = newGameEntityOfType(Fungus) {
+        attributes(EntityPosition(), BlockOccupier, EntityTile(GameTileRepository.FUNGUS), fungusSpread)
+        behaviors(FungusGrowth)
+        facets(Attackable)
     }
 }
