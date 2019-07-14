@@ -23,6 +23,9 @@ object GameConfig {
 
     val WORLD_SIZE = Sizes.create3DSize(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2, CATACOMB_LEVELS)
 
+    const val FUNGI_PER_LEVEL = 15
+
+
     fun buildAppConfig() = AppConfigs.newConfig()
             .enableBetaFeatures()
             .withDefaultTileset(TILESET)

@@ -28,4 +28,9 @@ object GameTileRepository {
             .withBackgroundColor(GameColors.WALL_BACKGROUND)
             .buildCharacterTile()
 
+    val FUNGUS = Tiles.newBuilder()
+            .withCharacter('ñ')
+            .withBackgroundColor(GameColors.FLOOR_BACKGROUND)
+            .withForegroundColor(GameColors.FUNGUS_COLOR)
+            .buildCharacterTile()
 }

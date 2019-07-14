@@ -26,6 +26,13 @@ object EntityFactory {
 
     fun newWall() = newGameEntityOfType(Wall) {
         attributes(EntityPosition(), BlockOccupier, EntityTile(GameTileRepository.WALL))
+        behaviors()
         facets(Diggable)
+    }
+
+    fun newFungus() = newGameEntityOfType(Fungus) {
+        attributes(EntityPosition(), BlockOccupier, EntityTile(GameTileRepository.FUNGUS))
+        behaviors()
+        facets()
     }
 }
