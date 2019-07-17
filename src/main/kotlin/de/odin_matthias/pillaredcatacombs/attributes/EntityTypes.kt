@@ -9,10 +9,16 @@ import org.hexworks.amethyst.api.entity.EntityType
 object Player : BaseEntityType(
         name = "player"), Combatant
 
+object Fungus : BaseEntityType(
+        name = "fungus"), Combatant
+
 object Wall : BaseEntityType(
         name = "wall")
 
-object Fungus : BaseEntityType(
-        name = "fungus"), Combatant
+object StairsDown : BaseEntityType(
+        name = "stairs down")
+
+object StairsUp : BaseEntityType(
+        name = "stairs up")
 
 interface Combatant : EntityType

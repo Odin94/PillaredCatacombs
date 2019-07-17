@@ -26,17 +26,29 @@ object EntityFactory {
         facets(Movable, CameraMover)
     }
 
-    fun newWall() = newGameEntityOfType(Wall) {
-        attributes(EntityPosition(), BlockOccupier, EntityTile(GameTileRepository.WALL))
-        behaviors()
-        facets(Diggable)
-    }
-
     fun newFungus(fungusSpread: FungusSpread = FungusSpread()) = newGameEntityOfType(Fungus) {
         val fungusCombatStats = CombatStats.create(maxHp = 10, attackValue = 1, defenseValue = 0)
 
         attributes(EntityPosition(), BlockOccupier, EntityTile(GameTileRepository.FUNGUS), fungusSpread, fungusCombatStats)
         behaviors(FungusGrowth)
         facets(Attackable, Destructible)
+    }
+
+    fun newWall() = newGameEntityOfType(Wall) {
+        attributes(EntityPosition(), BlockOccupier, EntityTile(GameTileRepository.WALL))
+        behaviors()
+        facets(Diggable)
+    }
+
+    fun newStairsDown() = newGameEntityOfType(StairsDown) {
+        attributes(EntityPosition(), EntityTile(GameTileRepository.STAIRS_DOWN))
+        behaviors()
+        facets()
+    }
+
+    fun newStairsUp() = newGameEntityOfType(StairsUp) {
+        attributes(EntityPosition(), EntityTile(GameTileRepository.STAIRS_UP))
+        behaviors()
+        facets()
     }
 }
