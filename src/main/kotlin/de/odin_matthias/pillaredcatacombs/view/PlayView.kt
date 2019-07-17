@@ -2,8 +2,10 @@ package de.odin_matthias.pillaredcatacombs.view
 
 import de.odin_matthias.pillaredcatacombs.blocks.GameBlock
 import de.odin_matthias.pillaredcatacombs.config.GameConfig
+import de.odin_matthias.pillaredcatacombs.events.GameLogEvent
 import de.odin_matthias.pillaredcatacombs.game.Game
 import de.odin_matthias.pillaredcatacombs.game.GameBuilder
+import org.hexworks.cobalt.events.api.subscribe
 import org.hexworks.zircon.api.ColorThemes
 import org.hexworks.zircon.api.Components
 import org.hexworks.zircon.api.GameComponents
@@ -14,15 +16,26 @@ import org.hexworks.zircon.api.game.ProjectionMode
 import org.hexworks.zircon.api.mvc.base.BaseView
 import org.hexworks.zircon.api.uievent.KeyboardEventType
 import org.hexworks.zircon.api.uievent.Processed
+import org.hexworks.zircon.internal.Zircon
 
 
 class PlayView(private val game: Game = GameBuilder.defaultGame()) : BaseView() {
     override val theme = ColorThemes.arc()
 
     override fun onDock() {
+        val logArea = buildLogArea()
+
         screen.addComponent(buildGameComponent())
         screen.addComponent(buildSidebar())
-        screen.addComponent(buildLogArea())
+        screen.addComponent(logArea)
+
+        Zircon.eventBus.subscribe<GameLogEvent> { (text) ->
+            logArea.addParagraph(
+                    paragraph = text,
+                    withNewLine = false,
+                    withTypingEffectSpeedInMs = 10
+            )
+        }
 
         screen.onKeyboardEvent(KeyboardEventType.KEY_PRESSED) { event, _ ->
             game.world.update(screen, event, game)
