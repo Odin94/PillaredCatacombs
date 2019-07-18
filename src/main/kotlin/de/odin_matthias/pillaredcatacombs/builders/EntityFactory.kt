@@ -23,7 +23,7 @@ object EntityFactory {
 
         attributes(EntityPosition(), EntityTile(GameTileRepository.PLAYER), EntityActions(Dig::class, Attack::class), playerCombatStats)
         behaviors(InputReceiver)
-        facets(Movable, CameraMover)
+        facets(Movable, CameraMover, StairClimber, StairDescender)
     }
 
     fun newFungus(fungusSpread: FungusSpread = FungusSpread()) = newGameEntityOfType(Fungus) {
