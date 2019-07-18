@@ -3,6 +3,7 @@ package de.odin_matthias.pillaredcatacombs.extensions
 
 import de.odin_matthias.pillaredcatacombs.attributes.*
 import de.odin_matthias.pillaredcatacombs.flags.BlockOccupier
+import de.odin_matthias.pillaredcatacombs.flags.VisionBlocker
 import de.odin_matthias.pillaredcatacombs.game.GameContext
 import org.hexworks.amethyst.api.Attribute
 import org.hexworks.amethyst.api.Consumed
@@ -21,14 +22,17 @@ var AnyGameEntity.position
         }
     }
 
+val AnyGameEntity.blocksVision: Boolean
+    get() = findAttribute(VisionBlocker::class).isPresent
+
 val AnyGameEntity.tile: Tile
-    get() = this.tryToFindAttribute(EntityTile::class).tile
+    get() = tryToFindAttribute(EntityTile::class).tile
 
 val AnyGameEntity.occupiesBlock: Boolean
     get() = findAttribute(BlockOccupier::class).isPresent
 
 val AnyGameEntity.isPlayer: Boolean
-    get() = this.type == Player
+    get() = type == Player
 
 fun <T : Attribute> AnyGameEntity.tryToFindAttribute(klass: KClass<T>): T = findAttribute(klass).orElseThrow {
     NoSuchElementException("Entity '$this' has no property with type '${klass.simpleName}'.")
