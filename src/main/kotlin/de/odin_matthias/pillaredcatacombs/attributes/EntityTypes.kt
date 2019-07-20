@@ -6,6 +6,8 @@ import org.hexworks.amethyst.api.entity.EntityType
 
 // completely new entities need to get a custom tile (GameTileRepository) and a factory function (EntityFactory)
 
+object FogOfWarTypeType : BaseEntityType()
+
 object Player : BaseEntityType(
         name = "player"), Combatant
 

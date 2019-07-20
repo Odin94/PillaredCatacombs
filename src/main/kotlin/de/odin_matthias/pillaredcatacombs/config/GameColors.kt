@@ -4,6 +4,8 @@ import org.hexworks.zircon.api.TileColors
 
 
 object GameColors {
+    val UNREVEALED_COLOR = TileColors.fromString("#000000")
+
     val WALL_FOREGROUND = TileColors.fromString("#75715E")
     val WALL_BACKGROUND = TileColors.fromString("#3E3D32")
 

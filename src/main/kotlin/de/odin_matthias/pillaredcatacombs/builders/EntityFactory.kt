@@ -3,8 +3,10 @@ package de.odin_matthias.pillaredcatacombs.builders
 import de.odin_matthias.pillaredcatacombs.attributes.*
 import de.odin_matthias.pillaredcatacombs.blocks.GameTileRepository
 import de.odin_matthias.pillaredcatacombs.commands.*
+import de.odin_matthias.pillaredcatacombs.entities.FogOfWar
 import de.odin_matthias.pillaredcatacombs.flags.BlockOccupier
 import de.odin_matthias.pillaredcatacombs.flags.VisionBlocker
+import de.odin_matthias.pillaredcatacombs.game.Game
 import de.odin_matthias.pillaredcatacombs.game.GameContext
 import de.odin_matthias.pillaredcatacombs.systems.CameraMover
 import de.odin_matthias.pillaredcatacombs.systems.Diggable
@@ -19,6 +21,8 @@ fun <T : EntityType> newGameEntityOfType(type: T, init: EntityBuilder<T, GameCon
         Entities.newEntityOfType(type, init)
 
 object EntityFactory {
+    fun newFogOfWar(game: Game) = FogOfWar(game)
+
     fun newPlayer() = newGameEntityOfType(Player) {
         val playerCombatStats = CombatStats.create(maxHp = 100, attackValue = 10, defenseValue = 5)
 

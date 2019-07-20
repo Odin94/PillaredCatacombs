@@ -10,6 +10,11 @@ object GameTileRepository {
     // TODO: replace these character tiles with images / GraphicTiles
     val EMPTY = Tiles.empty()
 
+    val UNREVEALED = Tiles.newBuilder()
+            .withCharacter(' ')
+            .withBackgroundColor(GameColors.UNREVEALED_COLOR)
+            .buildCharacterTile()
+
     val PLAYER = Tiles.newBuilder()
             .withCharacter('@')
             .withBackgroundColor(GameColors.FLOOR_BACKGROUND)

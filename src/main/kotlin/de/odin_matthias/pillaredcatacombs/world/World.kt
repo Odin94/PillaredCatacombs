@@ -159,6 +159,10 @@ class World(startingBlocks: Map<Position3D, GameBlock>,
         }.orElse(listOf())
     }
 
+    fun addWorldEntity(entity: GameEntity<EntityType>) {
+        engine.addEntity(entity)
+    }
+
     companion object {
         private val DEFAULT_BLOCK = GameBlockFactory.floor()
     }
