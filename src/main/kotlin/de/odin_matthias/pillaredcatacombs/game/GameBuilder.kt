@@ -5,6 +5,7 @@ import de.odin_matthias.pillaredcatacombs.builders.EntityFactory
 import de.odin_matthias.pillaredcatacombs.config.GameConfig
 import de.odin_matthias.pillaredcatacombs.config.GameConfig.FUNGI_PER_LEVEL
 import de.odin_matthias.pillaredcatacombs.config.GameConfig.GHOULS_PER_LEVEL
+import de.odin_matthias.pillaredcatacombs.config.GameConfig.STONE_MASK_FRAGMENTS_PER_LEVEL
 import de.odin_matthias.pillaredcatacombs.config.GameConfig.WORLD_SIZE
 import de.odin_matthias.pillaredcatacombs.extensions.GameEntity
 import de.odin_matthias.pillaredcatacombs.world.WorldBuilder
@@ -31,6 +32,7 @@ class GameBuilder(val worldSize: Size3D) {
         val player = addPlayer()
         addFungi()
         addGhouls()
+        addStoneMaskFragments()
 
         val game = Game.create(
                 player = player,
@@ -63,6 +65,14 @@ class GameBuilder(val worldSize: Size3D) {
         repeat(world.actualSize().zLength) { level ->
             repeat(GHOULS_PER_LEVEL) {
                 EntityFactory.newGhoul().addToWorld(level)
+            }
+        }
+    }
+
+    private fun addStoneMaskFragments() = also {
+        repeat(world.actualSize().zLength) { level ->
+            repeat(STONE_MASK_FRAGMENTS_PER_LEVEL) {
+                EntityFactory.newStoneMaskFragment().addToWorld(level)
             }
         }
     }

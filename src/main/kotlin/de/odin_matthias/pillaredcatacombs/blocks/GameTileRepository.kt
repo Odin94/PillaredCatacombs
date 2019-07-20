@@ -56,4 +56,10 @@ object GameTileRepository {
             .withForegroundColor(GameColors.ACCENT_COLOR)
             .withBackgroundColor(GameColors.FLOOR_BACKGROUND)
             .buildCharacterTile()
+
+    val STONE_MASK_FRAGMENT = Tiles.newBuilder()
+            .withCharacter(',')
+            .withBackgroundColor(GameColors.FLOOR_BACKGROUND)
+            .withForegroundColor(GameColors.STONE_MASK_FRAGMENT_COLOR)
+            .buildCharacterTile()
 }

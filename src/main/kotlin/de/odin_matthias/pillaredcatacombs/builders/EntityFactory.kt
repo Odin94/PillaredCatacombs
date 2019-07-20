@@ -13,6 +13,8 @@ import de.odin_matthias.pillaredcatacombs.systems.*
 import org.hexworks.amethyst.api.Entities
 import org.hexworks.amethyst.api.builder.EntityBuilder
 import org.hexworks.amethyst.api.entity.EntityType
+import org.hexworks.zircon.api.GraphicalTilesetResources
+import org.hexworks.zircon.api.Tiles
 
 
 fun <T : EntityType> newGameEntityOfType(type: T, init: EntityBuilder<T, GameContext>.() -> Unit) =
@@ -61,5 +63,14 @@ object EntityFactory {
         attributes(EntityPosition(), EntityTile(GameTileRepository.STAIRS_UP))
         behaviors()
         facets()
+    }
+
+    fun newStoneMaskFragment() = newGameEntityOfType(StoneMaskFragment) {
+        val stoneMaskFragmentIcon = ItemIcon(Tiles.newBuilder()
+                .withName("white fragment")
+                .withTileset(GraphicalTilesetResources.nethack16x16())
+                .buildGraphicTile())
+
+        attributes(stoneMaskFragmentIcon, EntityPosition(), EntityTile(GameTileRepository.STONE_MASK_FRAGMENT))
     }
 }

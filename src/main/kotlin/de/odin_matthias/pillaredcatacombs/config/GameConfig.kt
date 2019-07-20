@@ -28,6 +28,8 @@ object GameConfig {
 
     const val GHOULS_PER_LEVEL = 10
 
+    const val STONE_MASK_FRAGMENTS_PER_LEVEL = 20
+
     fun buildAppConfig() = AppConfigs.newConfig()
             .enableBetaFeatures()
             .withDefaultTileset(TILESET)
