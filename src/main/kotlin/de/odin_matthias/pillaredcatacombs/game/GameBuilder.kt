@@ -4,6 +4,7 @@ import de.odin_matthias.pillaredcatacombs.attributes.Player
 import de.odin_matthias.pillaredcatacombs.builders.EntityFactory
 import de.odin_matthias.pillaredcatacombs.config.GameConfig
 import de.odin_matthias.pillaredcatacombs.config.GameConfig.FUNGI_PER_LEVEL
+import de.odin_matthias.pillaredcatacombs.config.GameConfig.GHOULS_PER_LEVEL
 import de.odin_matthias.pillaredcatacombs.config.GameConfig.WORLD_SIZE
 import de.odin_matthias.pillaredcatacombs.extensions.GameEntity
 import de.odin_matthias.pillaredcatacombs.world.WorldBuilder
@@ -29,6 +30,7 @@ class GameBuilder(val worldSize: Size3D) {
 
         val player = addPlayer()
         addFungi()
+        addGhouls()
 
         val game = Game.create(
                 player = player,
@@ -53,6 +55,14 @@ class GameBuilder(val worldSize: Size3D) {
         repeat(world.actualSize().zLength) { level ->
             repeat(FUNGI_PER_LEVEL) {
                 EntityFactory.newFungus().addToWorld(level)
+            }
+        }
+    }
+
+    private fun addGhouls() = also {
+        repeat(world.actualSize().zLength) { level ->
+            repeat(GHOULS_PER_LEVEL) {
+                EntityFactory.newGhoul().addToWorld(level)
             }
         }
     }

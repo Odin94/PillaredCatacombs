@@ -27,6 +27,12 @@ object GameTileRepository {
             .withForegroundColor(GameColors.FUNGUS_COLOR)
             .buildCharacterTile()
 
+    val GHOUL = Tiles.newBuilder()
+            .withCharacter('{')
+            .withBackgroundColor(GameColors.FLOOR_BACKGROUND)
+            .withForegroundColor(GameColors.GHOUL_COLOR)
+            .buildCharacterTile()
+
     val FLOOR = Tiles.newBuilder()
             .withCharacter(Symbols.INTERPUNCT)
             .withForegroundColor(GameColors.FLOOR_FOREGROUND)

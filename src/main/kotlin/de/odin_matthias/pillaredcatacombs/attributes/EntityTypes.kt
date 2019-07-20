@@ -14,6 +14,9 @@ object Player : BaseEntityType(
 object Fungus : BaseEntityType(
         name = "fungus"), Combatant
 
+object Ghoul : BaseEntityType(
+        name = "ghoul"), Combatant
+
 object Wall : BaseEntityType(
         name = "wall")
 

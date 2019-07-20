@@ -26,6 +26,7 @@ object GameConfig {
     const val FUNGI_PER_LEVEL = 15
     const val MAXIMUM_FUNGUS_SPREAD = 20
 
+    const val GHOULS_PER_LEVEL = 10
 
     fun buildAppConfig() = AppConfigs.newConfig()
             .enableBetaFeatures()

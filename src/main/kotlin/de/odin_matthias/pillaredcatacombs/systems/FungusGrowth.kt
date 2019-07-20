@@ -1,4 +1,4 @@
-package de.odin_matthias.pillaredcatacombs.commands
+package de.odin_matthias.pillaredcatacombs.systems
 
 import de.odin_matthias.pillaredcatacombs.attributes.FungusSpread
 import de.odin_matthias.pillaredcatacombs.builders.EntityFactory

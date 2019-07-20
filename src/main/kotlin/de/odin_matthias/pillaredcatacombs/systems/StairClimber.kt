@@ -1,7 +1,8 @@
-package de.odin_matthias.pillaredcatacombs.commands
+package de.odin_matthias.pillaredcatacombs.systems
 
 import de.odin_matthias.pillaredcatacombs.attributes.StairsUp
 import de.odin_matthias.pillaredcatacombs.blocks.GameBlock
+import de.odin_matthias.pillaredcatacombs.commands.MoveUp
 import de.odin_matthias.pillaredcatacombs.extensions.position
 import de.odin_matthias.pillaredcatacombs.functions.logGameEvent
 import de.odin_matthias.pillaredcatacombs.game.GameContext

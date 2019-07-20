@@ -1,5 +1,7 @@
-package de.odin_matthias.pillaredcatacombs.commands
+package de.odin_matthias.pillaredcatacombs.systems
 
+import de.odin_matthias.pillaredcatacombs.commands.Attack
+import de.odin_matthias.pillaredcatacombs.commands.Destroy
 import de.odin_matthias.pillaredcatacombs.extensions.combatStats
 import de.odin_matthias.pillaredcatacombs.extensions.isPlayer
 import de.odin_matthias.pillaredcatacombs.extensions.whenHasNoHealthLeft
