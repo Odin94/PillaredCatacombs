@@ -4,6 +4,7 @@ import de.odin_matthias.pillaredcatacombs.attributes.Player
 import de.odin_matthias.pillaredcatacombs.commands.MoveDown
 import de.odin_matthias.pillaredcatacombs.commands.MoveTo
 import de.odin_matthias.pillaredcatacombs.commands.MoveUp
+import de.odin_matthias.pillaredcatacombs.commands.PickUpItem
 import de.odin_matthias.pillaredcatacombs.extensions.GameEntity
 import de.odin_matthias.pillaredcatacombs.extensions.position
 import de.odin_matthias.pillaredcatacombs.game.GameContext
@@ -20,16 +21,17 @@ object InputReceiver : BaseBehavior<GameContext>() {
 
     override fun update(entity: GameEntity<out EntityType>, context: GameContext): Boolean {
         val (_, _, uiEvent, player) = context
-        val currentPos = player.position
+        val position = player.position
 
         if (uiEvent is KeyboardEvent) {
             when (uiEvent.code) {
-                KeyCode.KEY_W -> player.moveTo(currentPos.withRelativeY(-1), context)
-                KeyCode.KEY_A -> player.moveTo(currentPos.withRelativeX(-1), context)
-                KeyCode.KEY_S -> player.moveTo(currentPos.withRelativeY(1), context)
-                KeyCode.KEY_D -> player.moveTo(currentPos.withRelativeX(1), context)
+                KeyCode.KEY_W -> player.moveTo(position.withRelativeY(-1), context)
+                KeyCode.KEY_A -> player.moveTo(position.withRelativeX(-1), context)
+                KeyCode.KEY_S -> player.moveTo(position.withRelativeY(1), context)
+                KeyCode.KEY_D -> player.moveTo(position.withRelativeX(1), context)
                 KeyCode.KEY_R -> player.moveUp(context)
                 KeyCode.KEY_F -> player.moveDown(context)
+                KeyCode.KEY_P -> player.pickUpItem(position, context)
                 else ->
                     logger.debug("UI Event ($uiEvent) does not have a corresponding command, it is ignored.")
             }
@@ -48,5 +50,9 @@ object InputReceiver : BaseBehavior<GameContext>() {
 
     private fun GameEntity<Player>.moveDown(context: GameContext) {
         executeCommand(MoveDown(context, this))
+    }
+
+    private fun GameEntity<Player>.pickUpItem(position: Position3D, context: GameContext) {
+        executeCommand(PickUpItem(context, this, position))
     }
 }

@@ -26,9 +26,16 @@ object EntityFactory {
     fun newPlayer() = newGameEntityOfType(Player) {
         val playerCombatStats = CombatStats.create(maxHp = 100, attackValue = 10, defenseValue = 5)
 
-        attributes(EntityPosition(), BlockOccupier, EntityTile(GameTileRepository.PLAYER), EntityActions(Dig::class, Attack::class), playerCombatStats, Vision(9))
+        attributes(EntityPosition(),
+                BlockOccupier,
+                EntityTile(GameTileRepository.PLAYER),
+                EntityActions(Dig::class, Attack::class),
+                playerCombatStats,
+                Vision(9),
+                Inventory(10))
+
         behaviors(InputReceiver)
-        facets(Movable, CameraMover, StairClimber, StairDescender, Attackable, Destructible)
+        facets(Movable, CameraMover, StairClimber, StairDescender, Attackable, Destructible, ItemPicker)
     }
 
     fun newFungus(fungusSpread: FungusSpread = FungusSpread()) = newGameEntityOfType(Fungus) {

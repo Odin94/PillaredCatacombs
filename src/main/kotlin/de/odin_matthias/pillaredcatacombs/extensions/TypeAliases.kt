@@ -2,6 +2,7 @@ package de.odin_matthias.pillaredcatacombs.extensions
 
 
 import de.odin_matthias.pillaredcatacombs.attributes.Item
+import de.odin_matthias.pillaredcatacombs.attributes.ItemHolder
 import de.odin_matthias.pillaredcatacombs.game.GameContext
 import org.hexworks.amethyst.api.Command
 import org.hexworks.amethyst.api.entity.Entity
@@ -11,3 +12,4 @@ typealias AnyGameEntity = Entity<EntityType, GameContext>
 typealias GameEntity<T> = Entity<T, GameContext>
 typealias GameCommand<T> = Command<T, GameContext>
 typealias GameItem = GameEntity<Item>
+typealias GameItemHolder = GameEntity<ItemHolder>

@@ -2,6 +2,8 @@ package de.odin_matthias.pillaredcatacombs.attributes
 
 
 import de.odin_matthias.pillaredcatacombs.extensions.GameEntity
+import de.odin_matthias.pillaredcatacombs.extensions.GameItem
+import de.odin_matthias.pillaredcatacombs.extensions.GameItemHolder
 import org.hexworks.amethyst.api.base.BaseEntityType
 import org.hexworks.amethyst.api.entity.EntityType
 import org.hexworks.zircon.api.data.GraphicalTile
@@ -12,7 +14,7 @@ import org.hexworks.zircon.api.data.Tile
 object FogOfWarTypeType : BaseEntityType()
 
 object Player : BaseEntityType(
-        name = "player"), Combatant
+        name = "player"), Combatant, ItemHolder
 
 object Fungus : BaseEntityType(
         name = "fungus"), Combatant
@@ -42,3 +44,12 @@ val GameEntity<Item>.tile: Tile
 
 val GameEntity<Item>.iconTile: GraphicalTile
     get() = findAttribute(ItemIcon::class).get().iconTile
+
+interface ItemHolder : EntityType
+
+fun GameItemHolder.addItem(item: GameItem) = inventory.addItem(item)
+
+fun GameItemHolder.removeItem(item: GameItem) = inventory.removeItem(item)
+
+val GameItemHolder.inventory: Inventory
+    get() = findAttribute(Inventory::class).get()
