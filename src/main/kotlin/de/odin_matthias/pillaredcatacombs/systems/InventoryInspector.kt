@@ -15,8 +15,8 @@ import org.hexworks.zircon.api.Sizes
 import org.hexworks.zircon.api.builder.component.ModalBuilder
 import org.hexworks.zircon.api.component.ComponentAlignment
 import org.hexworks.zircon.api.extensions.onComponentEvent
-import org.hexworks.zircon.api.uievent.ComponentEventType
-import org.hexworks.zircon.api.uievent.Processed
+import org.hexworks.zircon.api.extensions.onKeyboardEvent
+import org.hexworks.zircon.api.uievent.*
 import org.hexworks.zircon.internal.component.modal.EmptyModalResult
 
 
@@ -53,6 +53,13 @@ object InventoryInspector : BaseFacet<GameContext>() {
                     }
                 }
         )
+
+        modal.onKeyboardEvent(KeyboardEventType.KEY_PRESSED) { event, _ ->
+            if (event.code in listOf(KeyCode.ESCAPE)) {
+                modal.close(EmptyModalResult)
+                Processed
+            } else Pass
+        }
 
         modal.applyColorTheme(GameConfig.THEME)
         screen.openModal(modal)
