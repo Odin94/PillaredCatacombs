@@ -1,10 +1,7 @@
 package de.odin_matthias.pillaredcatacombs.systems
 
 import de.odin_matthias.pillaredcatacombs.attributes.Player
-import de.odin_matthias.pillaredcatacombs.commands.MoveDown
-import de.odin_matthias.pillaredcatacombs.commands.MoveTo
-import de.odin_matthias.pillaredcatacombs.commands.MoveUp
-import de.odin_matthias.pillaredcatacombs.commands.PickUpItem
+import de.odin_matthias.pillaredcatacombs.commands.*
 import de.odin_matthias.pillaredcatacombs.extensions.GameEntity
 import de.odin_matthias.pillaredcatacombs.extensions.position
 import de.odin_matthias.pillaredcatacombs.game.GameContext
@@ -32,6 +29,7 @@ object InputReceiver : BaseBehavior<GameContext>() {
                 KeyCode.KEY_R -> player.moveUp(context)
                 KeyCode.KEY_F -> player.moveDown(context)
                 KeyCode.KEY_P -> player.pickUpItem(position, context)
+                KeyCode.KEY_I -> player.inspectInventory(position, context)
                 else ->
                     logger.debug("UI Event ($uiEvent) does not have a corresponding command, it is ignored.")
             }
@@ -54,5 +52,9 @@ object InputReceiver : BaseBehavior<GameContext>() {
 
     private fun GameEntity<Player>.pickUpItem(position: Position3D, context: GameContext) {
         executeCommand(PickUpItem(context, this, position))
+    }
+
+    private fun GameEntity<Player>.inspectInventory(position: Position3D, context: GameContext) {
+        executeCommand(InspectInventory(context, this, position))
     }
 }

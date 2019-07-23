@@ -35,7 +35,7 @@ object EntityFactory {
                 Inventory(10))
 
         behaviors(InputReceiver)
-        facets(Movable, CameraMover, StairClimber, StairDescender, Attackable, Destructible, ItemPicker)
+        facets(Movable, CameraMover, StairClimber, StairDescender, Attackable, Destructible, ItemPicker, InventoryInspector, ItemDropper)
     }
 
     fun newFungus(fungusSpread: FungusSpread = FungusSpread()) = newGameEntityOfType(Fungus) {
@@ -74,7 +74,7 @@ object EntityFactory {
 
     fun newStoneMaskFragment() = newGameEntityOfType(StoneMaskFragment) {
         val stoneMaskFragmentIcon = ItemIcon(Tiles.newBuilder()
-                .withName("white fragment")
+                .withName("white gem")
                 .withTileset(GraphicalTilesetResources.nethack16x16())
                 .buildGraphicTile())
 
