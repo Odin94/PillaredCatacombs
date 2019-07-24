@@ -15,6 +15,7 @@ import org.hexworks.cobalt.datatypes.extensions.map
 import org.hexworks.cobalt.datatypes.extensions.orElseThrow
 import org.hexworks.zircon.api.data.Tile
 import kotlin.reflect.KClass
+import kotlin.reflect.full.isSubclassOf
 import kotlin.reflect.full.isSuperclassOf
 
 var AnyGameEntity.position
@@ -68,3 +69,9 @@ fun GameEntity<Combatant>.whenHasNoHealthLeft(fn: () -> Unit) {
 // check the items of a Block for a given type (e.g. Item)
 inline fun <reified T : EntityType> Iterable<AnyGameEntity>.filterType(): List<Entity<T, GameContext>> =
         filter { T::class.isSuperclassOf(it.type::class) }.toList() as List<Entity<T, GameContext>>
+
+inline fun <reified T : EntityType> AnyGameEntity.whenTypeIs(fn: (Entity<T, GameContext>) -> Unit) {
+    if (this.type::class.isSubclassOf(T::class)) {
+        fn(this as Entity<T, GameContext>)
+    }
+}

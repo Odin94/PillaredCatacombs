@@ -32,10 +32,12 @@ object EntityFactory {
                 EntityActions(Dig::class, Attack::class),
                 playerCombatStats,
                 Vision(9),
-                Inventory(10))
+                Inventory(10),
+                EnergyLevel(10, 10))
 
-        behaviors(InputReceiver)
-        facets(Movable, CameraMover, StairClimber, StairDescender, Attackable, Destructible, ItemPicker, InventoryInspector, ItemDropper)
+        behaviors(InputReceiver, EnergyExpender)
+        facets(Movable, CameraMover, StairClimber, StairDescender, Attackable, Destructible, ItemPicker,
+                InventoryInspector, ItemDropper, EnergyExpender, DigestiveSystem)
     }
 
     fun newFungus(fungusSpread: FungusSpread = FungusSpread()) = newGameEntityOfType(Fungus) {

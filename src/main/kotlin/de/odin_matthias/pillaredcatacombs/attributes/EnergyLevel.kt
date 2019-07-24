@@ -15,5 +15,4 @@ class EnergyLevel(initialEnergy: Int,
         }
 
     private val currentValueProperty = createPropertyFrom(initialEnergy)
-
 }

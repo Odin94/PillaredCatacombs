@@ -1,6 +1,7 @@
 package de.odin_matthias.pillaredcatacombs.attributes
 
 
+import de.odin_matthias.pillaredcatacombs.attributes.types.EnergyUser
 import de.odin_matthias.pillaredcatacombs.extensions.GameEntity
 import de.odin_matthias.pillaredcatacombs.extensions.GameItem
 import de.odin_matthias.pillaredcatacombs.extensions.GameItemHolder
@@ -14,7 +15,7 @@ import org.hexworks.zircon.api.data.Tile
 object FogOfWarTypeType : BaseEntityType()
 
 object Player : BaseEntityType(
-        name = "player"), Combatant, ItemHolder
+        name = "player"), Combatant, ItemHolder, EnergyUser
 
 object Fungus : BaseEntityType(
         name = "fungus"), Combatant
