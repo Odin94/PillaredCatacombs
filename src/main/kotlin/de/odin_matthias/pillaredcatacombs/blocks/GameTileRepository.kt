@@ -62,4 +62,10 @@ object GameTileRepository {
             .withBackgroundColor(GameColors.FLOOR_BACKGROUND)
             .withForegroundColor(GameColors.STONE_MASK_FRAGMENT_COLOR)
             .buildCharacterTile()
+
+    val GHOUL_BLOOD = Tiles.newBuilder()
+            .withCharacter('~')
+            .withBackgroundColor(GameColors.FLOOR_BACKGROUND)
+            .withForegroundColor(GameColors.GHOUL_BLOOD_COLOR)
+            .buildCharacterTile()
 }

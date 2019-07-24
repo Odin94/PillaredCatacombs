@@ -36,6 +36,11 @@ object StoneMaskFragment : BaseEntityType(
         name = "Stone Mask Fragment",
         description = "A fragment of a stone mask. Assembling a whole mask will unleash unfathomable power."), Item
 
+object GhoulBlood : BaseEntityType(
+        name = "Ghoul blood",
+        description = "Juicy ghoul blood. It's drinkable, but not tasty")
+
+
 interface Combatant : EntityType
 
 interface Item : EntityType

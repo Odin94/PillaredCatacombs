@@ -18,4 +18,5 @@ object GameColors {
     val GHOUL_COLOR = TileColors.fromString("#2348b2")
 
     val STONE_MASK_FRAGMENT_COLOR = TileColors.fromString("#DDDDDD")
+    val GHOUL_BLOOD_COLOR = TileColors.fromString("#EE0505")
 }

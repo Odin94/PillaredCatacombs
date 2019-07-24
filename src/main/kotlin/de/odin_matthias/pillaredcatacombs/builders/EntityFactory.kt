@@ -1,6 +1,7 @@
 package de.odin_matthias.pillaredcatacombs.builders
 
 import de.odin_matthias.pillaredcatacombs.attributes.*
+import de.odin_matthias.pillaredcatacombs.attributes.types.NutritionalValue
 import de.odin_matthias.pillaredcatacombs.blocks.GameTileRepository
 import de.odin_matthias.pillaredcatacombs.commands.Attack
 import de.odin_matthias.pillaredcatacombs.commands.Dig
@@ -81,5 +82,17 @@ object EntityFactory {
                 .buildGraphicTile())
 
         attributes(stoneMaskFragmentIcon, EntityPosition(), EntityTile(GameTileRepository.STONE_MASK_FRAGMENT))
+    }
+
+    fun newGhoulBlood() = newGameEntityOfType(GhoulBlood) {
+        val ghoulBloodIcon = ItemIcon(Tiles.newBuilder()
+                .withName("Meatball")
+                .withTileset(GraphicalTilesetResources.nethack16x16())
+                .buildGraphicTile())
+
+        attributes(ghoulBloodIcon,
+                NutritionalValue(750),
+                EntityPosition(),
+                EntityTile(GameTileRepository.GHOUL_BLOOD))
     }
 }
